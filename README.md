@@ -14,7 +14,8 @@ Following the 2 steps of indication, please try on your work.
 
 
 ```
-<img width="334" alt="HepScope_Symbol" src="https://github.com/HepScope/HepScope/assets/155046754/ec42a7eb-80f1-44d5-93fc-679bafd889d4">
+
+<img width="261" alt="HepScope_symbol2" src="https://github.com/HepScope/HepScope/assets/155046754/55a24aba-adef-4ed8-ac42-631199c91090">
 
 
 [hep_model.h5.zip](https://github.com/HepScope/HepScope/files/13783760/hep_model.h5.zip)
