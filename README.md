@@ -11,10 +11,9 @@ You can download the model pre-trained with HepScope gene set.
 
 Following the 2 steps of indication, please try on your work.
 
-<img width="334" alt="HepScope_Symbol" src="https://github.com/HepScope/HepScope/assets/155046754/a8c6fc55-fc0a-47f7-8c77-ae685f5de03f">
-
 
 ```
+<img width="334" alt="HepScope_Symbol" src="https://github.com/HepScope/HepScope/assets/155046754/ec42a7eb-80f1-44d5-93fc-679bafd889d4">
 
 
 [hep_model.h5.zip](https://github.com/HepScope/HepScope/files/13783760/hep_model.h5.zip)
