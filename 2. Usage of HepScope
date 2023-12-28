@@ -11,7 +11,8 @@ import numpy as np
 import pandas as pd 
 
 
-#Import data
+##Import data
+### train - Normal : 4000, Malig : 4000
 train_hep_Malig = pd.read_csv('./train_Malig.csv')
 train_hep_Malig = train_hep_Malig.drop('Unnamed: 0', axis=1)
 train_hep_Normal = pd.read_csv('./train_Normal.csv')
@@ -26,7 +27,7 @@ train_hep_Y = train_hep_X['label'].values
 train_hep_X = train_hep_X.drop(columns='label')
 
 
-# Validation - Normal : 1000, Malig : 1000
+### Validation - Normal : 1000, Malig : 1000
 val_hep_Normal = pd.read_csv("./val_Normal.csv")
 val_hep_Normal = val_hep_Normal.drop('Unnamed: 0', axis=1)
 val_hep_Malig= pd.read_csv("./val_Malig.csv")
@@ -37,7 +38,7 @@ val_hep_X = pd.concat([val_hep_Normal, val_hep_Malig]).reset_index(drop=True)
 val_hep_Y = val_hep_X['label'].values
 val_hep_X = val_hep_X.drop(columns='label')
 
-# Test - Normal : 1000, Malig : 1000
+### Test - Normal : 1000, Malig : 1000
 test_hep_Normal = pd.read_csv("./test_Normal.csv")
 test_hep_Normal = test_hep_Normal.drop('Unnamed: 0', axis=1)
 test_hep_Malig = pd.read_csv("./test_Malig.csv")
