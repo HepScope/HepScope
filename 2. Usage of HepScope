@@ -11,6 +11,64 @@ import numpy as np
 import pandas as pd 
 
 
+#Import data
+train_hep_Malig = pd.read_csv('./train_Malig.csv')
+train_hep_Malig = train_hep_Malig.drop('Unnamed: 0', axis=1)
+train_hep_Normal = pd.read_csv('./train_Normal.csv')
+train_hep_Normal = train_hep_Normal.drop('Unnamed: 0', axis=1)
+print("train_hep_Normal shape:",train_hep_Normal.shape)
+print(train_hep_Normal.head())
+print("────────────────────")
+train_hep_Normal['label'] = 0
+train_hep_Malig['label'] = 1
+train_hep_X = pd.concat([train_hep_Normal, train_hep_Malig]).reset_index(drop=True)
+train_hep_Y = train_hep_X['label'].values
+train_hep_X = train_hep_X.drop(columns='label')
+
+
+# Validation - Normal : 1000, Malig : 1000
+val_hep_Normal = pd.read_csv("./val_Normal.csv")
+val_hep_Normal = val_hep_Normal.drop('Unnamed: 0', axis=1)
+val_hep_Malig= pd.read_csv("./val_Malig.csv")
+val_hep_Malig = val_hep_Malig.drop('Unnamed: 0', axis=1)
+val_hep_Normal['label'] = 0
+val_hep_Malig['label'] = 1
+val_hep_X = pd.concat([val_hep_Normal, val_hep_Malig]).reset_index(drop=True)
+val_hep_Y = val_hep_X['label'].values
+val_hep_X = val_hep_X.drop(columns='label')
+
+# Test - Normal : 1000, Malig : 1000
+test_hep_Normal = pd.read_csv("./test_Normal.csv")
+test_hep_Normal = test_hep_Normal.drop('Unnamed: 0', axis=1)
+test_hep_Malig = pd.read_csv("./test_Malig.csv")
+test_hep_Malig = test_hep_Malig.drop('Unnamed: 0', axis=1)
+test_hep_Normal['label'] = 0
+test_hep_Malig['label'] = 1
+test_hep_X = pd.concat([test_hep_Normal, test_hep_Malig]).reset_index(drop=True)
+test_hep_Y = test_hep_X['label'].values
+test_hep_X = test_hep_X.drop(columns='label')
+
+print("train_hep_X shape:",train_hep_X.shape)
+print(train_hep_X.head())
+print("────────────────────")
+print("train_hep_Y shape:",train_hep_Y.shape)
+print(train_hep_Y.head())
+print("────────────────────")
+print("val_hep_X shape:",val_hep_X.shape)
+print(val_hep_X.head())
+print("────────────────────")
+print("val_hep_Y shape:",val_hep_Y.shape)
+print(val_hep_Y.head())
+print("────────────────────")
+print("test_hep_X shape:",test_hep_X.shape)
+print(test_hep_X.head())
+print("────────────────────")
+print("test_hep_Y shape:",test_hep_Y.shape)
+print(test_hep_Y.head())
+print("────────────────────")
+
+
+
 ##Import pre-trained model
 hep_model = load_model('./hep_model.h5')
 
