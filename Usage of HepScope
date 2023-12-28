@@ -1,0 +1,24 @@
+#Import pretrained model
+hep_model = load_model('./hep_model.h5')
+
+#Check the performance of model
+res_hep_y = [1 if res > 0.9 else 0 for res in hep_model.predict(test_hep_X, batch_size = 64, workers = 16)]
+
+#Confusion matrix
+print(confusion_matrix(test_hep_Y, res_hep_y))
+print("Accuracy : %.4f "%accuracy_score(test_hep_Y, res_hep_y))
+hep_pred = hep_model.predict(test_hep_X, workers = 16, batch_size = 64)
+hep_fpr, hep_tpr, hep_threshold = roc_curve(test_hep_Y, hep_pred)
+hep_roc_auc = auc(hep_fpr, hep_tpr)
+hep_precision, hep_recall, hep_thresholds = precision_recall_curve(test_hep_Y, hep_pred)
+hep_pr_auc = auc(hep_recall, hep_precision)
+hep_f1=f1_score(test_hep_Y, res_hep_y)
+hep_Precision=precision_score(test_hep_Y, res_hep_y)
+hep_Recall=recall_score(test_hep_Y, res_hep_y)
+
+#AUC, AUPRC, Precision, Recall, F1 score
+print("hep_AUC : %.4f"%(hep_roc_auc))
+print("hep_AUPRC : %.4f"%(hep_pr_auc))
+print("hep_precision : %.4f"%(hep_Precision))
+print("hep_recall : %.4f"%(hep_Recall))
+print("hep_f1 : %.4f"%(hep_f1))
