@@ -1,5 +1,5 @@
-*HepScope: CNN-based single-cell discrimination of malignant hepatocytes
-*
+**HepScope: CNN-based single-cell discrimination of malignant hepatocytes
+**
 
 HepScope-CNN model is 1D-CNN based model for identifying malignant hepatocytes in HCC at the single-cell level.
 
