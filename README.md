@@ -5,7 +5,8 @@
 
 ```
 
-HepScope-CNN model is 1D-CNN based model for identifying malignant hepatocytes in HCC at the single-cell level.
+HepScope-CNN model is 1D-CNN based model for identifying malignant hepatocytes
+in HCC at the single-cell level.
 
 You can download the model pre-trained with HepScope gene set.  
 
