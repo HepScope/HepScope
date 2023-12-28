@@ -1,0 +1,77 @@
+# This code is established in R
+
+library(utils)
+library(Seurat)
+library(data.table)
+
+gepliv_normal_hepa <- subset(gepliv_hepa, Phenotype=="Normal")
+gepliv_normal_hepa <- subset(gepliv_normal_hepa,  cells = sample(Cells(gepliv_normal_hepa),2600)) #to valance composition of data
+dim(gepliv_normal_hepa)
+
+                             
+gepliv_nonmalig_hepa <- subset(gepliv_hepa, Cell_Subtype=="Hepa_Normal")
+gepliv_nonmalig_hepa <- subset(gepliv_nonmalig_hepa, Phenotype=="ADJ_HCC"|Phenotype=="HCC"|colnames(gepliv_nonmalig_hepa)%in%colnames(gepliv_normal_hepa))
+table(gepliv_nonmalig_hepa$Phenotype)
+
+
+gepliv_malig_hepa <- subset(gepliv_hepa, Cell_Subtype=="Hepa_Malignant")
+gepliv_malig_hepa <- subset(gepliv_malig_hepa,  cells = sample(Cells(gepliv_malig_hepa),4000))
+dim(gepliv_malig_hepa)
+
+
+GSE151530_Normal_hepa <- subset(GSE151530_HCC_hepa, subtype=="Non-malignant")
+GSE151530_Normal_val <- subset(GSE151530_Normal_hepa,  cells = sample(Cells(GSE151530_Normal_hepa),1000))
+dim(GSE151530_Normal_val)
+
+
+`%notin%` <- Negate(`%in%`)
+GSE151530_Normal_test <- GSE151530_Normal_hepa[,colnames(GSE151530_Normal_hepa)%notin%colnames(GSE151530_Normal_val)]
+dim(GSE151530_Normal_test)
+GSE151530_Normal_test <- subset(GSE151530_Normal_test,  cells = sample(Cells(GSE151530_Normal_test),1000))
+dim(GSE151530_Normal_test)
+intersect(colnames(GSE151530_Normal_val),colnames(GSE151530_Normal_test))
+
+
+GSE151530_Malig_hepa <- subset(GSE151530_HCC_hepa, subtype=="Malignant")
+GSE151530_Malig_val <- subset(GSE151530_Malig_hepa,  cells = sample(Cells(GSE151530_Malig_hepa),1000))
+dim(GSE151530_Malig_val)
+
+
+GSE151530_Malig_test <- GSE151530_Malig_hepa[,colnames(GSE151530_Malig_hepa)%notin%colnames(GSE151530_Malig_val)]
+dim(GSE151530_Malig_test)
+GSE151530_Malig_test <- subset(GSE151530_Malig_test, cells = sample(Cells(GSE151530_Malig_test),1000))
+dim(GSE151530_Malig_test)
+intersect(colnames(GSE151530_Malig_val),colnames(GSE151530_Malig_test))
+
+train_Normal <- GetAssayData(gepliv_nonmalig_hepa[logFC_0_6_malig_list$feature,], assay = "RNA" ,slot = "data")
+train_Malig <- GetAssayData(gepliv_malig_hepa[logFC_0_6_malig_list$feature,], assay = "RNA" ,slot = "data")
+
+val_Normal <- GetAssayData(GSE151530_Normal_val[logFC_0_6_malig_list2$feature,], assay = "RNA" ,slot = "data")
+val_Malig <- GetAssayData(GSE151530_Malig_val[logFC_0_6_malig_list2$feature,], assay = "RNA" ,slot = "data")
+
+test_Normal <- GetAssayData(GSE151530_Normal_test[logFC_0_6_malig_list2$feature,], assay = "RNA" ,slot = "data")
+test_Malig <- GetAssayData(GSE151530_Malig_test[logFC_0_6_malig_list2$feature,], assay = "RNA" ,slot = "data")
+
+head(train_Normal)[1:5,1:5]
+
+train_Normal <- as.data.frame(t(train_Normal))
+train_Malig <- as.data.frame(t(train_Malig))
+val_Normal <- as.data.frame(t(val_Normal))
+val_Malig <- as.data.frame(t(val_Malig))
+test_Normal <- as.data.frame(t(test_Normal))
+test_Malig <- as.data.frame(t(test_Malig))
+
+train_Normal <- unname(train_Normal)
+train_Malig <- unname(train_Malig)
+val_Normal <- unname(val_Normal)
+val_Malig <- unname(val_Malig)
+test_Normal <- unname(test_Normal)
+test_Malig <- unname(test_Malig)
+
+
+write.csv(train_Normal, "train_Normal.csv", row.names = T, col.names = F)
+write.csv(train_Malig, "train_Malig.csv", row.names = T, col.names = F)
+write.csv(val_Normal, "val_Normal.csv", row.names = T, col.names = F)
+write.csv(val_Malig, "val_Malig.csv", row.names = T, col.names = F)
+write.csv(test_Normal, "test_Normal.csv", row.names = T, col.names = F)
+write.csv(test_Malig, "test_Malig.csv", row.names = T, col.names = F)
