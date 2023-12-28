@@ -1,6 +1,6 @@
 #This code was established in google colab.
 
-### Import library
+##Import library
 !pip install import_ipynb
 import import_ipynb
 import matplotlib as mpl
@@ -11,13 +11,13 @@ import numpy as np
 import pandas as pd 
 
 
-#Import pre-trained model
+##Import pre-trained model
 hep_model = load_model('./hep_model.h5')
 
-#Check the performance of model
+##Check the performance of model
 res_hep_y = [1 if res > 0.5 else 0 for res in hep_model.predict(test_hep_X, batch_size = 64, workers = 16)]
 
-#Confusion matrix
+##Confusion matrix
 print(confusion_matrix(test_hep_Y, res_hep_y))
 print("Accuracy : %.4f "%accuracy_score(test_hep_Y, res_hep_y))
 hep_pred = hep_model.predict(test_hep_X, workers = 16, batch_size = 64)
@@ -29,7 +29,7 @@ hep_f1=f1_score(test_hep_Y, res_hep_y)
 hep_Precision=precision_score(test_hep_Y, res_hep_y)
 hep_Recall=recall_score(test_hep_Y, res_hep_y)
 
-#AUC, AUPRC, Precision, Recall, F1 score
+##AUC, AUPRC, Precision, Recall, F1 score
 print("hep_AUC : %.4f"%(hep_roc_auc))
 print("hep_AUPRC : %.4f"%(hep_pr_auc))
 print("hep_precision : %.4f"%(hep_Precision))
