@@ -2,7 +2,7 @@
 hep_model = load_model('./hep_model.h5')
 
 #Check the performance of model
-res_hep_y = [1 if res > 0.9 else 0 for res in hep_model.predict(test_hep_X, batch_size = 64, workers = 16)]
+res_hep_y = [1 if res > 0.5 else 0 for res in hep_model.predict(test_hep_X, batch_size = 64, workers = 16)]
 
 #Confusion matrix
 print(confusion_matrix(test_hep_Y, res_hep_y))
