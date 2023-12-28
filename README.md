@@ -2,7 +2,6 @@
 
 ## HepScope-CNN model
 
-<img width="334" alt="HepScope_Symbol" src="https://github.com/HepScope/HepScope/assets/155046754/b6fd2521-e6f7-44d1-9068-5cc40ee273fb">
 
 ```
 
@@ -11,6 +10,9 @@ HepScope-CNN model is 1D-CNN based model for identifying malignant hepatocytes i
 You can download the model pre-trained with HepScope gene set.  
 
 Following the 2 steps of indication, please try on your work.
+
+<img width="334" alt="HepScope_Symbol" src="https://github.com/HepScope/HepScope/assets/155046754/a8c6fc55-fc0a-47f7-8c77-ae685f5de03f">
+
 
 ```
 
