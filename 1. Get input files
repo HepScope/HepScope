@@ -5,7 +5,7 @@ library(Seurat)
 library(data.table)
 
 gepliv_normal_hepa <- subset(gepliv_hepa, Phenotype=="Normal")
-gepliv_normal_hepa <- subset(gepliv_normal_hepa,  cells = sample(Cells(gepliv_normal_hepa),2600)) #to valance composition of data
+gepliv_normal_hepa <- subset(gepliv_normal_hepa, cells = sample(Cells(gepliv_normal_hepa),2600)) #to valance composition of data
 dim(gepliv_normal_hepa)
 
                              
@@ -15,25 +15,25 @@ table(gepliv_nonmalig_hepa$Phenotype)
 
 
 gepliv_malig_hepa <- subset(gepliv_hepa, Cell_Subtype=="Hepa_Malignant")
-gepliv_malig_hepa <- subset(gepliv_malig_hepa,  cells = sample(Cells(gepliv_malig_hepa),4000))
+gepliv_malig_hepa <- subset(gepliv_malig_hepa, cells = sample(Cells(gepliv_malig_hepa),4000))
 dim(gepliv_malig_hepa)
 
 
 GSE151530_Normal_hepa <- subset(GSE151530_HCC_hepa, subtype=="Non-malignant")
-GSE151530_Normal_val <- subset(GSE151530_Normal_hepa,  cells = sample(Cells(GSE151530_Normal_hepa),1000))
+GSE151530_Normal_val <- subset(GSE151530_Normal_hepa, cells = sample(Cells(GSE151530_Normal_hepa),1000))
 dim(GSE151530_Normal_val)
 
 
 `%notin%` <- Negate(`%in%`)
 GSE151530_Normal_test <- GSE151530_Normal_hepa[,colnames(GSE151530_Normal_hepa)%notin%colnames(GSE151530_Normal_val)]
 dim(GSE151530_Normal_test)
-GSE151530_Normal_test <- subset(GSE151530_Normal_test,  cells = sample(Cells(GSE151530_Normal_test),1000))
+GSE151530_Normal_test <- subset(GSE151530_Normal_test, cells = sample(Cells(GSE151530_Normal_test),1000))
 dim(GSE151530_Normal_test)
 intersect(colnames(GSE151530_Normal_val),colnames(GSE151530_Normal_test))
 
 
 GSE151530_Malig_hepa <- subset(GSE151530_HCC_hepa, subtype=="Malignant")
-GSE151530_Malig_val <- subset(GSE151530_Malig_hepa,  cells = sample(Cells(GSE151530_Malig_hepa),1000))
+GSE151530_Malig_val <- subset(GSE151530_Malig_hepa, cells = sample(Cells(GSE151530_Malig_hepa),1000))
 dim(GSE151530_Malig_val)
 
 
