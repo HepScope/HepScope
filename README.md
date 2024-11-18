@@ -25,6 +25,6 @@ Un-trained model
 Input data
 [Input_data.zip](https://github.com/user-attachments/files/16742723/Input_data.zip)
 
-#### It is available to see the detailed in our publication
+### It is available to see the detailed in our publication
 
 Go, Y., Ng, J.T., Lim, D.WT. et al. HepScope: CNN-based single-cell discrimination of malignant hepatocytes. J Big Data 11, 149 (2024). https://doi.org/10.1186/s40537-024-01024-2
