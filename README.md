@@ -2,6 +2,10 @@
 
 ## HepScope-CNN model
 
+### It is available to see the detailed in our publication
+
+Go, Y., Ng, J.T., Lim, D.WT. et al. HepScope: CNN-based single-cell discrimination of malignant hepatocytes. J Big Data 11, 149 (2024). https://doi.org/10.1186/s40537-024-01024-2
+
 
 ```
 
